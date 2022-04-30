@@ -1,0 +1,23 @@
+{
+    "name": "jajuma/dynamicshippingtax",
+    "description": "Dynamic Shipping Tax",
+    "type": "magento2-module",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "JaJuMa",
+            "email": "info@jajuma.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Jajuma\\DynamicShippingTax\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
