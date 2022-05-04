@@ -17,4 +17,14 @@
                 type="Jajuma\DynamicShippingTax\Plugin\Tax\Model\Sales\Total\Quote\CommonTaxCollectorPlugin"
                 sortOrder="1"/>
     </type>
+    <type name="Jajuma\DynamicShippingTax\Plugin\Tax\Config\AroundGetShippingTaxClassPlugin">
+        <arguments>
+            <argument name="taxCalculation" xsi:type="object">Magento\Tax\Model\Calculation\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Jajuma\DynamicShippingTax\Plugin\Tax\Model\Sales\Total\Quote\CommonTaxCollectorPlugin">
+        <arguments>
+            <argument name="taxCalculation" xsi:type="object">Magento\Tax\Model\Calculation\Proxy</argument>
+        </arguments>
+    </type>
 </config>

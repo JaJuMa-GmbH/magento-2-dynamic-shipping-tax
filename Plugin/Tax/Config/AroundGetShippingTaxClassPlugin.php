@@ -9,6 +9,7 @@ namespace Jajuma\DynamicShippingTax\Plugin\Tax\Config;
 
 use Magento\Store\Model\Store;
 use Jajuma\DynamicShippingTax\Model\Config;
+use Magento\Tax\Model\Calculation;
 
 /**
  * Class AroundGetShippingTaxClassPlugin
@@ -62,7 +63,7 @@ class AroundGetShippingTaxClassPlugin
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Customer\Model\ResourceModel\GroupRepository $groupRepository,
-        \Magento\Tax\Model\Calculation\Proxy $taxCalculation,
+        Calculation $taxCalculation,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Checkout\Model\Session $session
     )

@@ -10,6 +10,7 @@ namespace Jajuma\DynamicShippingTax\Plugin\Tax\Model\Sales\Total\Quote;
 use Magento\Store\Model\Store;
 use Jajuma\DynamicShippingTax\Model\Config;
 use Magento\Tax\Api\Data\TaxClassKeyInterface;
+use Magento\Tax\Model\Calculation;
 
 /**
  * Class CommonTaxCollectorPlugin
@@ -57,7 +58,7 @@ class CommonTaxCollectorPlugin
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Customer\Model\ResourceModel\GroupRepository $groupRepository,
-        \Magento\Tax\Model\Calculation\Proxy $taxCalculation,
+        Calculation $taxCalculation,
         \Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory $taxClassKeyDataObjectFactory
     )
     {
