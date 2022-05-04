@@ -23,10 +23,10 @@ composer require jajuma/dynamicshippingtax
 
 ## Using dynamic shipping tax rates in Magento with JaJuMa "Dynamic Shipping Tax" module
 
->Go to **JaJuMa -> Dynamic Shipping Tax -> Configuration -> Tax Classes**  
+Go to **JaJuMa -> Dynamic Shipping Tax -> Configuration -> Tax Classes**  
 And find the **"Dynamic Shipping Tax Class"** configuration which provides 3 options:
 
-1. No dynamic shipping tax caluclation  
+1. No dynamic shipping tax calculation  
    -> Magento default config "Tax Class for Shipping" will be used for calculating shipping tax</li>
 2. Use the highest product tax  
    -> The highest product tax rate in cart will be used for calculating shipping tax  
