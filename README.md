@@ -1,8 +1,15 @@
 # Dynamic Shipping Tax for Magento 2 by [JaJuMa](https://www.jajuma.de/)
 
-<img align="right" width="300" height="300" src="https://www.jajuma.de/sites/default/files/ckfinder/userfiles/images/jajuma-develop/dynamic-shipping-tax-magento/Dynamic-Shpping-Tax-Module-Magento-2-large.png">
+<img align="right" width="300" height="300" src="https://www.jajuma.de/sites/default/files/ckfinder/userfiles/images/jajuma-develop/dynamic-shipping-tax-magento/Dynamic-Shpping-Tax-Module-Magento-2-large.png">  
 
-Dynamic Shipping Tax extension by [JaJuMa](https://www.jajuma.de/en) allows dynamic shipping tax calculation for Magento 2 sites.
+Dynamic Shipping Tax extension by [JaJuMa](https://www.jajuma.de/en) allows  
+dynamic shipping tax calculation for Magento 2 sites.  
+
+
+<img align="left" width="80" src="https://www.jajuma.de/sites/default/files/ckfinder/userfiles/images/jajuma-shop/magento-with-hyva/JaJuMa-Hyvanaut-small.png">  
+
+Compatible with  
+[Hyvä Theme](https://www.jajuma.de/en/jajuma-shop/online-shop-with-magento-2-and-hyva-themes)  
   
 ## Further Info, Extension Description & Manual
 
