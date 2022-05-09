@@ -14,9 +14,6 @@ li#menu-jajuma-top-level:hover > a:before {
 li[class^=item-jajuma] strong.submenu-group-title {
     display: block!important;
 }
-li[class^=item-jajuma].parent.level-1 {
-    min-height: 215px;
-}
 li.item-extensions.parent.level-1 {
     border-top: 1px solid #aaa6a0;
 }
