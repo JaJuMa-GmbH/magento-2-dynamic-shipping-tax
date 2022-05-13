@@ -19,7 +19,7 @@
         <tab id="jajuma" sortOrder="400" class="jajuma-tab" translate="label">
             <label>JaJuMa</label>
         </tab>
-        <section id="dynamicshippingtax" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+        <section id="dynamicshippingtax" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label">
             <label>Dynamic Shipping Tax</label>
             <tab>jajuma</tab>
             <resource>Jajuma_DynamicShippingTax::config_jajuma_dynamicshippingtax</resource>

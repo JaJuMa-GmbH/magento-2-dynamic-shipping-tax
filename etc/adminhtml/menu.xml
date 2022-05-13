@@ -8,7 +8,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
-		<update id="Jajuma::top_level"
+		<update id="Jajuma::top_level_extensions"
              module="Jajuma_DynamicShippingTax"
              resource="Jajuma_General::jajuma_extensions"
              sortOrder="65"
@@ -19,7 +19,7 @@
 			 module="Jajuma_DynamicShippingTax"
 			 sortOrder="1400"
 			 resource="Jajuma_DynamicShippingTax::config_jajuma_dynamicshippingtax"
-			 parent="Jajuma::top_level"/>
+			 parent="Jajuma::top_level_extensions"/>
 		<add id="Jajuma_DynamicShippingTax::jajuma_dynamicshippingtax_info"
 			 title="Info + Manual"
 			 module="Jajuma_DynamicShippingTax"
@@ -39,7 +39,7 @@
              module="Jajuma_DynamicShippingTax"
              resource="Jajuma_General::jajuma_extensions"
              sortOrder="10000"
-             parent="Jajuma::top_level"
+             parent="Jajuma::top_level_extensions"
              title="JaJuMa Extensions"/>
 		<update id="Jajuma_Extensions::extensions_link"
              title="More JaJuMa Extensions" module="Jajuma_DynamicShippingTax"
