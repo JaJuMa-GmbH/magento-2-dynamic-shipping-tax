@@ -7,6 +7,7 @@
 
 namespace Jajuma\DynamicShippingTax\Plugin\Tax\Config;
 
+use Magento\Quote\Model\QuoteRepository;
 use Magento\Store\Model\Store;
 use Jajuma\DynamicShippingTax\Model\Config;
 use Magento\Tax\Model\Calculation;
@@ -51,13 +52,16 @@ class AroundGetShippingTaxClassPlugin
      */
     protected $session;
 
+    private $quoteRepository;
+
     /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Customer\Model\ResourceModel\GroupRepository $groupRepository
-     * @param \Magento\Tax\Model\Calculation\Proxy $taxCalculation
+     * @param Calculation $taxCalculation
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param Session $session
+     * @param \Magento\Checkout\Model\Session $session
+     * @param QuoteRepository $quoteRepository
      */
     public function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
@@ -65,7 +69,8 @@ class AroundGetShippingTaxClassPlugin
         \Magento\Customer\Model\ResourceModel\GroupRepository $groupRepository,
         Calculation $taxCalculation,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Checkout\Model\Session $session
+        \Magento\Checkout\Model\Session $session,
+        QuoteRepository $quoteRepository
     )
     {
         $this->scopeConfig = $scopeConfig;
@@ -74,6 +79,7 @@ class AroundGetShippingTaxClassPlugin
         $this->taxCalculation = $taxCalculation;
         $this->storeManager = $storeManager;
         $this->session = $session;
+        $this->quoteRepository = $quoteRepository;
     }
 
     /**
@@ -86,7 +92,7 @@ class AroundGetShippingTaxClassPlugin
     {
         $currentUrl = $this->storeManager->getStore()->getCurrentUrl(false);
 
-        //check step place order page checkout 
+        //check step place order page checkout
 
         if (strpos($currentUrl, 'payment-information') !== false) {
             return $proceed($store);
@@ -99,7 +105,9 @@ class AroundGetShippingTaxClassPlugin
         );
 
         // get all item in cart
-        $quoteItems = $this->session->getQuote()->getAllVisibleItems();
+        $quoteId = $this->session->getQuoteId();
+        $quote = $this->quoteRepository->get($quoteId);
+        $quoteItems = $quote->getAllVisibleItems();
 
         // If not items in cart or dynamic shipping type is default of magento, use default tax class for shipping
         if (count($quoteItems) == 0 || $dynamicShippingType == Config::SHIPPING_TAX_TYPE_DEFAULT) {
