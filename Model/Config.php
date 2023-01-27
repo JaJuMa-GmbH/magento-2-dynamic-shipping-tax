@@ -9,7 +9,9 @@ namespace Jajuma\DynamicShippingTax\Model;
 
 class Config
 {
-    const SHIPPING_TAX_TYPE_DEFAULT = 0;
-    const SHIPPING_TAX_TYPE_HIGHEST_PRODUCT_TAX = 1;
-    const SHIPPING_TAX_TYPE_HIGHEST_PRODUCT_PRICE_AMOUNT = 2;
+    public const SHIPPING_TAX_TYPE_DEFAULT = 0;
+
+    public const SHIPPING_TAX_TYPE_HIGHEST_PRODUCT_TAX = 1;
+
+    public const SHIPPING_TAX_TYPE_HIGHEST_PRODUCT_PRICE_AMOUNT = 2;
 }
