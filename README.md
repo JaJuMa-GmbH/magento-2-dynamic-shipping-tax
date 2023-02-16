@@ -3,14 +3,17 @@
 <img align="right" width="300" height="300" src="https://www.jajuma.de/sites/default/files/ckfinder/userfiles/images/jajuma-develop/dynamic-shipping-tax-magento/Dynamic-Shpping-Tax-Module-Magento-2-large.png">  
 
 Dynamic Shipping Tax extension by [JaJuMa](https://www.jajuma.de/en) allows  
-dynamic shipping tax calculation for Magento 2 sites.  
+dynamic shipping tax calculation for Magento 2 sites.
 
+> **Note**  
+> Looking for [proportional/pro-rata shipping tax calculation - Click Here!](https://www.jajuma.de/en/jajuma-develop/extensions/proportional-pro-rata-dynamic-shipping-tax-plus-extension-for-magento-2)?
+>
 
 <img align="left" width="80" src="https://www.jajuma.de/sites/default/files/ckfinder/userfiles/images/jajuma-shop/magento-with-hyva/JaJuMa-Hyvanaut-small.png">  
 
 Compatible with  
-[Hyvä Theme](https://www.jajuma.de/en/jajuma-shop/online-shop-with-magento-2-and-hyva-themes)  
-  
+[Hyvä Theme](https://www.jajuma.de/en/jajuma-shop/online-shop-with-magento-2-and-hyva-themes)
+
 ## Further Info, Extension Description & Manual
 
 * [Extension Website EN](https://www.jajuma.de/en/jajuma-develop/extensions/dynamic-shipping-tax-extension-for-magento-2)
@@ -36,11 +39,15 @@ And find the **"Dynamic Shipping Tax Class"** configuration which provides 3 opt
 1. No dynamic shipping tax calculation  
    -> Magento default config "Tax Class for Shipping" will be used for calculating shipping tax</li>
 2. Use the highest product tax  
-   -> The highest product tax rate in cart will be used for calculating shipping tax  
+   -> The highest product tax rate in cart will be used for calculating shipping tax
 3. Use highest amount tax  
--> Tax rate applicable to highest amount in cart will be used for calculating shipping tax  
+   -> Tax rate applicable to highest amount in cart will be used for calculating shipping tax
 
-Examples for "Use the highest product tax":  
+> **Note**  
+> Looking for [proportional/pro-rata shipping tax calculation - Click Here!](https://www.jajuma.de/en/jajuma-develop/extensions/proportional-pro-rata-dynamic-shipping-tax-plus-extension-for-magento-2)?
+>
+
+Examples for "Use the highest product tax":
 ```
 All Products in Cart have tax class = 7%
 -> Shipping tax = 7%
@@ -52,7 +59,7 @@ Some Product in Cart have 7%, some have 19%
 -> Shipping tax = 19%
 ```
 
-Examples for "Use highest amount tax":  
+Examples for "Use highest amount tax":
 ```
 Example 1
 Cart Total 100
@@ -67,81 +74,91 @@ Cart Total 100
 		Shipping Tax -> 19%
 ```
 
+> **Note**  
+> Looking for [proportional/pro-rata shipping tax calculation - Click Here!](https://www.jajuma.de/en/jajuma-develop/extensions/proportional-pro-rata-dynamic-shipping-tax-plus-extension-for-magento-2)?
+>
+
 ## License
 
 The code is licensed under the [MIT License (MIT)](https://github.com/JaJuMa/AwesomeHyva/blob/master/LICENSE)
 
 ## Other [Magento 2 Extensions](ttps://www.jajuma.de/en/jajuma-develop/magento-extensions) by [JaJuMa](https://www.jajuma.de/)
 
-  * :framed_picture: Performance & UX:<br>[Ultimate Image Optimizer for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/ultimate-image-optimizer-extension-for-magento-2)<br>
+* :framed_picture: Performance & UX:<br>[Ultimate Image Optimizer for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/ultimate-image-optimizer-extension-for-magento-2)<br>
   AVIF & WebP Images, Lazy Loading, High-Resolution / Retina images
 
-  * :framed_picture: Performance & UX:<br>[WebP Optimized Images for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/webp-optimized-images-extension-for-magento-2#portfolio-content)<br>
+* :framed_picture: Performance & UX:<br>[WebP Optimized Images for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/webp-optimized-images-extension-for-magento-2#portfolio-content)<br>
   The #1 WebP Images Solution for Magento 2
-   
-  * :see_no_evil: SEO:<br>[PRG Pattern Link Masking for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/prg-pattern-link-masking-for-magento-2)<br>
+
+* :see_no_evil: SEO:<br>[PRG Pattern Link Masking for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/prg-pattern-link-masking-for-magento-2)<br>
   Link Masking for Layered Navigation
-  
-  * :cop: User Experience:<br>[Shariff Social Share for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/shariff-social-share-buttons-extension-for-magento-2)<br>
+
+* :cop: User Experience:<br>[Shariff Social Share for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/shariff-social-share-buttons-extension-for-magento-2)<br>
   GDPR compliant and customizable Sharing Buttons
-  
-  * :movie_camera: Content Management:<br>[Video Widget for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/video-widget-gdpr-extension-for-magento-2)<br>
+
+* :movie_camera: Content Management:<br>[Video Widget for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/video-widget-gdpr-extension-for-magento-2)<br>
   Embedding YouTube videos, GDPR compliant with auto preview image & fully responsive
-  
-  * :rocket: Performance & UX:<br>[Page Preload for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/page-preload-extension-for-magento-2)<br>
+
+* :rocket: Performance & UX:<br>[Page Preload for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/page-preload-extension-for-magento-2)<br>
   Faster faster page transitions and subsequent page-loads by preloading / prefetching
 
-  * :chart_with_upwards_trend: Marketing:<br>[Matomo Analytics for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/honey-spam-anti-spam-extension-for-magento-2)<br>
+* :chart_with_upwards_trend: Marketing:<br>[Matomo Analytics for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/honey-spam-anti-spam-extension-for-magento-2)<br>
   Web Analytics - GDPR Compliant
 
-  * :honey_pot: Site Optimization:<br>[Honey Spam Anti-Spam for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/honey-spam-anti-spam-extension-for-magento-2)<br>
+* :honey_pot: Site Optimization:<br>[Honey Spam Anti-Spam for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/honey-spam-anti-spam-extension-for-magento-2)<br>
   Spam Protection - Reliable & GDPR Compliant
 
-  * :bell: Marketing:<br>[Customer Registration Reminder & Cleanup for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/customer-registration-reminder-and-cleanup-extension-for-magento-2)<br>
+* :bell: Marketing:<br>[Customer Registration Reminder & Cleanup for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/customer-registration-reminder-and-cleanup-extension-for-magento-2)<br>
   Increase Your Customer Engangement & Cleanup your Customer Account Data Automatically
 
-  * :mega: UX & Marketing:<br>[Category Grid Callouts for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/category-grid-callouts-extension-for-magento-2)<br>
+* :mega: UX & Marketing:<br>[Category Grid Callouts for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/category-grid-callouts-extension-for-magento-2)<br>
   Enrich Your Category Grids With Eye-Catching Callouts
 
-  * :thought_balloon: UX & Marketing:<br>[Customer Satisfaction Feedback for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/category-grid-callouts-extension-for-magento-2)<br>
+* :thought_balloon: UX & Marketing:<br>[Customer Satisfaction Feedback for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/category-grid-callouts-extension-for-magento-2)<br>
   Collect Valuable Feedback From Your Customers & Understand How To Satisfy Your Customers
 
-  * :triangular_flag_on_post: :free: UI & UX:<br>[Awesome Hyvä for Hyvä Themes](https://www.jajuma.de/en/jajuma-develop/extensions/font-awesome-icons-for-hyva-themes-extension)<br>
+* :sparkler: UX:<br>[Auto Select Options for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/auto-select-options-extension-for-magento-2)<br>
+  Automatically Select Configurable & Custom Options Based On Your Customer's Preferences
+
+* :left_right_arrow: UX & Performance:<br>[Back Forward Cache - bfcache for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/back-forward-cache-extension-for-magento-2)<br>
+  Enable bfcache for Magento 2 for improved UX & Core Web Vitals
+
+* :triangular_flag_on_post: :free: UI & UX:<br>[Awesome Hyvä for Hyvä Themes](https://www.jajuma.de/en/jajuma-develop/extensions/font-awesome-icons-for-hyva-themes-extension)<br>
   Font Awesome 5 & 6 Icons for your [Hyvä Themes](https://www.jajuma.de/de/jajuma-shop/online-shop-mit-magento-2-und-hyva-themes) Store
 
-  * :ok_man: :free: User Experience:<br>[Customer Navigation Manager for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/customer-navigation-manager-extension-for-magento-2)<br>
+* :ok_man: :free: User Experience:<br>[Customer Navigation Manager for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/customer-navigation-manager-extension-for-magento-2)<br>
   Easily manage the links in your Customer Account
 
-  * :heavy_division_sign: :free: Accounting:<br>[Dynamic Shipping Tax for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/dynamic-shipping-tax-extension-for-magento-2)<br>
+* :heavy_division_sign: :free: Accounting:<br>[Dynamic Shipping Tax for Magento 2](https://www.jajuma.de/en/jajuma-develop/extensions/dynamic-shipping-tax-extension-for-magento-2)<br>
   Dynamic Shipping Tax Calculation
 
-  * :question: :free: Content:<br>[Hyvä FAQ Widget for Hyvä Themes](https://www.jajuma.de/en/jajuma-develop/extensions/dynamic-shipping-tax-extension-for-magento-2)<br>
+* :question: :free: Content:<br>[Hyvä FAQ Widget for Hyvä Themes](https://www.jajuma.de/en/jajuma-develop/extensions/dynamic-shipping-tax-extension-for-magento-2)<br>
   FAQ Widget for your [Hyvä Themes](https://www.jajuma.de/de/jajuma-shop/online-shop-mit-magento-2-und-hyva-themes) Store
 
 ## Other [Services](https://www.jajuma.de/en/jajuma/company-magento-ecommerce-agency-stuttgart) by [JaJuMa](https://www.jajuma.de/)
 
-  * :shopping: [JaJuMa-Market: Marketplace Software](https://www.jajuma.de/en/jajuma-market)<br>
-   Complete Online Marketplace Software Solution. For Professional Demands. Feature Rich. Flexibly Customizable.
-   
-  * :shopping_cart: [JaJuMa-Shop](https://www.jajuma.de/en/jajuma-shop)<br>
-   Customized Magento Shop Solutions.
+* :shopping: [JaJuMa-Market: Marketplace Software](https://www.jajuma.de/en/jajuma-market)<br>
+  Complete Online Marketplace Software Solution. For Professional Demands. Feature Rich. Flexibly Customizable.
 
-  * :rocket: [JaJuMa-Shop: Hyvä Magento Shop Development](https://www.jajuma.de/de/jajuma-shop/online-shop-mit-magento-2-und-hyva-themes)<br>
-   Hyvä Magento Shop Development.
-   
-  * :orange_book: [JaJuMa-Shop: Magento Handbuch in Deutsch](https://www.jajuma.de/de/jajuma-shop/magento-2-handbuch/)<br>
-   Magento Handbuch in Deutsch.    
-   
-  * :card_index_dividers: [JaJuMa-PIM](https://www.jajuma.de/en/jajuma-pim)<br>
-   Product Information Management. Simple. Better.
+* :shopping_cart: [JaJuMa-Shop](https://www.jajuma.de/en/jajuma-shop)<br>
+  Customized Magento Shop Solutions.
 
-  * :heavy_plus_sign: [JaJuMa-Develop: Magento 2 Extensions](https://www.jajuma.de/en/jajuma-develop/magento-extensions)<br>
-   Individual Solutions For Your Business Case.    
-   
-  * :paintbrush: [JaJuMa-Design](https://www.jajuma.de/en/jajuma-design)<br>
-   Designs That Inspire.  
-   
-  * :necktie: [JaJuMa-Consult](https://www.jajuma.de/en/jajuma-consult)<br>
-   We Show You New Perspectives.  
+* :rocket: [JaJuMa-Shop: Hyvä Magento Shop Development](https://www.jajuma.de/de/jajuma-shop/online-shop-mit-magento-2-und-hyva-themes)<br>
+  Hyvä Magento Shop Development.
+
+* :orange_book: [JaJuMa-Shop: Magento Handbuch in Deutsch](https://www.jajuma.de/de/jajuma-shop/magento-2-handbuch/)<br>
+  Magento Handbuch in Deutsch.
+
+* :card_index_dividers: [JaJuMa-PIM](https://www.jajuma.de/en/jajuma-pim)<br>
+  Product Information Management. Simple. Better.
+
+* :heavy_plus_sign: [JaJuMa-Develop: Magento 2 Extensions](https://www.jajuma.de/en/jajuma-develop/magento-extensions)<br>
+  Individual Solutions For Your Business Case.
+
+* :paintbrush: [JaJuMa-Design](https://www.jajuma.de/en/jajuma-design)<br>
+  Designs That Inspire.
+
+* :necktie: [JaJuMa-Consult](https://www.jajuma.de/en/jajuma-consult)<br>
+  We Show You New Perspectives.
 
 © JaJuMa GmbH | [www.jajuma.de](www.jajuma.de)

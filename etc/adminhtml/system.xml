@@ -120,7 +120,7 @@
 				                224.517V336H106.692V115.336H74L91.2077 64H158.026V174.716ZM272.988 109.567L286.407
 				                69.7565H239.485L226.132 109.567H272.988ZM235.338 64H294.409L277.112
 				                115.336H218.13L235.338 64Z"></path></svg> Hyvä Theme Demo</a>
-				                <div style="float: right;">Installed Version: <b>1.0.1</b></div>
+				                <div style="float: right;">Installed Version: <b>1.0.2</b></div>
 				             </div>
                         </div>
                             <hr>
@@ -150,6 +150,12 @@
                                        target="_blank">Category Grid Callouts</a>
                                     <a href="https://www.jajuma.de/en/jajuma-develop/extensions/customer-satisfaction-feedback-extension-for-magento-2"
                                        target="_blank">Customer Satisfaction Feedback</a>
+                                    <a href="https://www.jajuma.de/en/jajuma-develop/extensions/auto-select-options-extension-for-magento-2"
+                                       target="_blank">Auto Select Options</a>
+                                    <a href="https://www.jajuma.de/en/jajuma-develop/extensions/proportional-pro-rata-dynamic-shipping-tax-plus-extension-for-magento-2"
+                                       target="_blank">Dynamic Shipping Tax Plus</a>
+                                    <a href="https://www.jajuma.de/en/jajuma-develop/extensions/back-forward-cache-extension-for-magento-2"
+                                       target="_blank">Back Forward Cache (bfcache)</a>
                                     <a href="https://www.jajuma.de/en/jajuma-develop/extensions/font-awesome-icons-for-hyva-themes-extension"
                                        target="_blank"><b>Free:</b> Awesome Hyvä</a>
                                     <a href="https://www.jajuma.de/en/jajuma-develop/extensions/customer-navigation-manager-extension-for-magento-2"
