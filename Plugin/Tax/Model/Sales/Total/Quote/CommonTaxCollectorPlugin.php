@@ -7,10 +7,20 @@
 
 namespace Jajuma\DynamicShippingTax\Plugin\Tax\Model\Sales\Total\Quote;
 
-use Magento\Store\Model\Store;
+use Jajuma\DynamicShippingTax\Helper\Config as ConfigHelper;
 use Jajuma\DynamicShippingTax\Model\Config;
+use Magento\Customer\Model\ResourceModel\GroupRepository;
+use Magento\Customer\Model\Session;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Quote\Api\Data\ShippingAssignmentInterface;
+use Magento\Quote\Model\Quote\Address\Total;
+use Magento\Quote\Model\Quote\Item;
+use Magento\Tax\Api\Data\QuoteDetailsItemInterface;
 use Magento\Tax\Api\Data\TaxClassKeyInterface;
+use Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory;
 use Magento\Tax\Model\Calculation;
+use Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector;
 
 /**
  * Class CommonTaxCollectorPlugin
@@ -20,179 +30,172 @@ use Magento\Tax\Model\Calculation;
  */
 class CommonTaxCollectorPlugin
 {
-    const CONFIG_PATH_DYNAMIC_SHIPPING_TAX_CLASS = 'tax/classes/dynamic_shipping_tax_class';
-
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     * @var Session
      */
-    private $scopeConfig;
+    private Session $customerSession;
 
     /**
-     * @var \Magento\Customer\Model\Session
+     * @var GroupRepository
      */
-    private $customerSession;
+    private GroupRepository $groupRepository;
 
     /**
-     * @var \Magento\Customer\Model\ResourceModel\GroupRepository
+     * @var Calculation
      */
-    private $groupRepository;
+    private Calculation $taxCalculation;
 
     /**
-     * @var \Magento\Tax\Model\Calculation\Proxy
+     * @var TaxClassKeyInterfaceFactory
      */
-    private $taxCalculation;
+    protected TaxClassKeyInterfaceFactory $taxClassKeyDataObjectFactory;
 
     /**
-     * @var \Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory
+     * @var ConfigHelper
      */
-    protected $taxClassKeyDataObjectFactory;
+    protected ConfigHelper $configHelper;
 
     /**
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\Customer\Model\Session $customerSession
-     * @param \Magento\Customer\Model\ResourceModel\GroupRepository $groupRepository
-     * @param \Magento\Tax\Model\Calculation\Proxy $taxCalculation
-     * @param \Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory $taxClassKeyDataObjectFactory
+     * @param Session $customerSession
+     * @param GroupRepository $groupRepository
+     * @param Calculation $taxCalculation
+     * @param TaxClassKeyInterfaceFactory $taxClassKeyDataObjectFactory
+     * @param ConfigHelper $configHelper
      */
     public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Customer\Model\Session $customerSession,
-        \Magento\Customer\Model\ResourceModel\GroupRepository $groupRepository,
+        Session $customerSession,
+        GroupRepository $groupRepository,
         Calculation $taxCalculation,
-        \Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory $taxClassKeyDataObjectFactory
-    )
-    {
-        $this->scopeConfig = $scopeConfig;
+        TaxClassKeyInterfaceFactory $taxClassKeyDataObjectFactory,
+        ConfigHelper $configHelper
+    ) {
         $this->customerSession = $customerSession;
         $this->groupRepository = $groupRepository;
         $this->taxCalculation = $taxCalculation;
         $this->taxClassKeyDataObjectFactory = $taxClassKeyDataObjectFactory;
+        $this->configHelper = $configHelper;
     }
 
     /**
-     * @param \Magento\Tax\Model\Config  $subject
-     * @param \Closure                   $proceed
-     * @param null|string|bool|int|Store $store
-     * @return mixed
+     * Re-set shipping tax class id
+     *
+     * @param CommonTaxCollector $subject
+     * @param QuoteDetailsItemInterface|null $result
+     * @param ShippingAssignmentInterface $shippingAssignment
+     * @param Total $total
+     * @param bool $useBaseCurrency
+     * @return QuoteDetailsItemInterface|null
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
      */
-    public function afterGetShippingDataObject(\Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector $subject, $result, $shippingAssignment, $total, $useBaseCurrency)
-    {
-        $store = $shippingAssignment->getShipping()->getAddress()->getQuote()->getStore();
-        $itemDataObject = $result; 
-        if($itemDataObject) {
-            $dynamicType = (int)$this->scopeConfig->getValue(
-                self::CONFIG_PATH_DYNAMIC_SHIPPING_TAX_CLASS,
-                \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
-                $store
-            );
-            $quoteItems = $shippingAssignment->getShipping()->getAddress()->getQuote()->getAllVisibleItems();
+    public function afterGetShippingDataObject(
+        CommonTaxCollector $subject,
+        ?QuoteDetailsItemInterface $result,
+        ShippingAssignmentInterface $shippingAssignment,
+        Total $total,
+        bool $useBaseCurrency
+    ): ?QuoteDetailsItemInterface {
+        if ($result) {
+            $store = $shippingAssignment->getShipping()->getAddress()->getQuote()->getStore();
+            $itemDataObject = $result;
 
+            $dynamicType = $this->configHelper->getDynamicShippingTaxType();
+            $quoteItems = $shippingAssignment->getShipping()->getAddress()->getQuote()->getAllVisibleItems();
             if ($dynamicType == Config::SHIPPING_TAX_TYPE_DEFAULT || count($quoteItems) == 0) {
                 return $result;
             }
-    
-            $taxClassId = false;
-    
+
+            $taxClassId = $this->configHelper->getDefaultTaxClass($store);
             if ($dynamicType == Config::SHIPPING_TAX_TYPE_HIGHEST_PRODUCT_TAX) {
-                $taxClassId = $this->getHighestTaxClassProduct($quoteItems, $store);
-            }
-    
-            if ($dynamicType == Config::SHIPPING_TAX_TYPE_HIGHEST_PRODUCT_PRICE_AMOUNT) {
-                $taxClassId = $this->getHighestProductPriceTax($quoteItems, $store);
+                $taxClassId = $this->getTaxHighestByProductTax($quoteItems, $store);
             }
 
-            // Set Tax Class Id when place order
+            if ($dynamicType == Config::SHIPPING_TAX_TYPE_HIGHEST_PRODUCT_PRICE_AMOUNT) {
+                $taxClassId = $this->getTaxByHighestProductPrice($quoteItems);
+            }
+
+            // Set tax class id when place order
             $itemDataObject->setTaxClassKey(
                 $this->taxClassKeyDataObjectFactory->create()
                     ->setType(TaxClassKeyInterface::TYPE_ID)
                     ->setValue($taxClassId)
             );
         }
+
         return $result;
     }
 
     /**
-     * @array  $quoteItems
-     * @int $store
-     * @return integer
-     */
-    private function getHighestTaxClassProduct($quoteItems, $store)
-    {
-        $taxClassIds = [];
-        $highestTaxRate = null;
-
-        foreach ($quoteItems as $quoteItem) {
-            /** @var $quoteItem \Magento\Quote\Model\Quote\Item */
-            if ($quoteItem->getParentItem()) {
-                continue;
-            }
-
-            // get the tax percent
-            $taxPercent = $quoteItem->getTaxPercent();
-            if (!$taxPercent) {
-                $taxPercent = $this->getTaxPercent($quoteItem->getTaxClassId(), $store);
-            }
-
-            // Add the tax class into array
-            if (is_float($taxPercent) && !in_array($taxPercent, $taxClassIds)) {
-                $taxClassIds[(string)$taxPercent] = $quoteItem->getTaxClassId();
-            }
-        }
-
-        // get the highest tax rate
-        krsort($taxClassIds);
-        if (count($taxClassIds) > 0) {
-            $highestTaxRate = array_shift($taxClassIds);
-        }
-        if (!$highestTaxRate || is_null($highestTaxRate)) {
-            return false;
-        }
-
-        return $highestTaxRate;
-    }
-
-    /**
-     * Get tax by highest price product
+     * Get tax class id by highest product tax
      *
-     * @array  $quoteItems
-     * @int $store
-     * @return integer
+     * @param mixed $quoteItems
+     * @param mixed $store
+     * @return mixed|null
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
      */
-    public function getHighestProductPriceTax($quoteItems, $store) {
-        $productPriceArray = [];
-        $highestPriceTax = null;
+    private function getTaxHighestByProductTax($quoteItems, $store)
+    {
+        $taxClassId = null;
+        $highestProductTax = 0;
 
         foreach ($quoteItems as $quoteItem) {
-            /** @var $quoteItem \Magento\Quote\Model\Quote\Item */
             if ($quoteItem->getParentItem()) {
                 continue;
             }
 
-            $productPrice = $quoteItem->getRowTotal();
-            $taxClassId = $quoteItem->getTaxClassId();
+            $itemTaxClassId = $quoteItem->getData('tax_class_id');
+            $itemTaxPercent = $quoteItem->getTaxPercent();
+            if (!$itemTaxPercent) {
+                $itemTaxPercent = $this->getTaxPercent($itemTaxClassId, $store);
+            }
 
-            $productPriceArray[] = array($productPrice, $taxClassId);
+            if ($itemTaxPercent >= $highestProductTax) {
+                $taxClassId = $itemTaxClassId;
+                $highestProductTax = $itemTaxPercent;
+            }
         }
 
-        usort($productPriceArray, function($a, $b) {
-            return $b[0] <=> $a[0];
-        });
-
-        $highestPriceTax = $productPriceArray[0][1];
-
-        if (!$highestPriceTax || is_null($highestPriceTax)) {
-            return false;
-        }
-
-        return $highestPriceTax;
+        return $taxClassId;
     }
 
     /**
-     * @param int $productTaxClassId
-     * @param null|string|bool|int|Store $store
-     * @return float|int
+     * Get tax class id by highest product tax
+     *
+     * @param mixed $quoteItems
+     * @return mixed|null
      */
-    private function getTaxPercent($productTaxClassId, $store)
+    private function getTaxByHighestProductPrice($quoteItems)
+    {
+        $taxClassId = null;
+        $highestProductPrice = 0;
+        foreach ($quoteItems as $quoteItem) {
+            /** @var $quoteItem Item */
+            if ($quoteItem->getParentItem()) {
+                continue;
+            }
+
+            $itemPrice = $quoteItem->getRowTotal();
+            $itemTaxClassId = $quoteItem->getData('tax_class_id');
+            if ($itemPrice >= $highestProductPrice) {
+                $taxClassId = $itemTaxClassId;
+                $highestProductPrice = $itemPrice;
+            }
+        }
+
+        return $taxClassId;
+    }
+
+    /**
+     * Get tax percent
+     *
+     * @param int $productTaxClassId
+     * @param mixed $store
+     * @return float|int
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    private function getTaxPercent(int $productTaxClassId, $store)
     {
         $groupId = $this->customerSession->getCustomerGroupId();
         $group = $this->groupRepository->getById($groupId);

@@ -14,20 +14,20 @@ class Dynamic implements \Magento\Framework\Option\ArrayInterface
     /**
      * @var array
      */
-    protected $options;
+    protected array $options = [];
 
     /**
      * Option Dynamic Shipping Tax
      *
      * @return array
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         if (!$this->options) {
             $options = [
                 [
                     'value' => Config::SHIPPING_TAX_TYPE_DEFAULT,
-                    'label' => __('No dynamic shipping tax caluclation')
+                    'label' => __('No dynamic shipping tax calculation')
                 ],
                 [
                     'value' => Config::SHIPPING_TAX_TYPE_HIGHEST_PRODUCT_TAX,
