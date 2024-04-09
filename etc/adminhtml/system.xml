@@ -382,6 +382,71 @@
                     ]]></comment>
                 </field>
             </group>
+            <group id="manual" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Manual</label>
+                <attribute type="expanded">1</attribute>
+                <field id="how_to_use" translate="label comment" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" type="text">
+                    <frontend_model>Jajuma\DynamicShippingTax\Block\System\Config\Form\Jajuma\Module</frontend_model>
+                    <comment><![CDATA[
+                    <div style="margin: auto; padding: 10px;">
+                            <div class="messages" style="padding: 15px 15px 15px 55px;background: #f2f2f2;color: #676056;">
+                                <h2><b>How to use JaJuMa Dynamic Shipping Tax:</b></h2>
+                                    <p>Go to <b>JaJuMa -> Dynamic Shipping Tax -> Configuration -> Tax Classes</b></p>
+                                    <p style="padding-bottom: 15px;">And find the <b>"Dynamic Shipping Tax Class"</b> configuration which provides 3 options:</b></p>
+                                    <ol style="padding-left: 20px;">
+                                        <li style="padding-bottom: 15px;"><b>No dynamic shipping tax calculation</b><br>
+                                        -> Magento default config "Tax Class for Shipping" will be used for calculating shipping tax</li>
+                                        <li style="padding-bottom: 15px;"><b>Use the highest product tax</b><br>
+                                        -> The highest product tax rate in cart will be used for calculating shipping tax<br><br>
+                                        Examples:<br>
+                                        <pre class="code">All Products in Cart have tax class = 7%
+-> Shipping tax = 7%
+
+All Products in Cart have tax class = 19%
+-> Shipping tax = 19%
+
+Some Product in Cart have 7%, some have 19%
+-> Shipping tax = 19%</pre>
+                                        </li>
+                                        <li style="padding-bottom: 15px;"><b>Use highest amount tax</b><br>
+                                        -> Tax rate applicable to highest amount in cart will be used for calculating shipping tax<br><br>
+                                        Examples:<br>
+                                        <pre class="code">Example 1
+Cart Total 100
+		Books (Tax 7%)	60 €
+		CDs   (Tax 19%)	40 €
+		Shipping Tax -> 7%
+
+Example 2
+Cart Total 100
+		Books (Tax 7%)	40 €
+		CDs   (Tax 19%)	60 €
+		Shipping Tax -> 19%</pre>
+                                        </li>
+                                    </ol>
+                        <style>
+                        pre.code {
+                            background: #3c3c3c;
+                            border: 1px solid #ddd;
+                            border-left: 5px solid #efb602;
+                            color: #fef4f4;
+                            page-break-inside: avoid;
+                            font-family: monospace;
+                            font-size: 15px;
+                            line-height: 1.6;
+                            margin-bottom: 1.6em;
+                            max-width: 100%;
+                            overflow: auto;
+                            padding: 1em 1.5em;
+                            display: block;
+                            word-wrap: break-word;
+                            border-radius: 10px;
+                        }
+                    </style>
+                    ]]></comment>
+                </field>
+            </group>
         </section>
     </system>
 </config>
+
