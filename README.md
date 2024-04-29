@@ -10,7 +10,7 @@ based on the highest product tax or highest amount tax in cart.
 > Looking for [proportional/pro-rata shipping tax calculation - Click Here!](https://www.jajuma.de/en/jajuma-develop/magento-extensions/proportional-pro-rata-dynamic-shipping-tax-plus-extension-for-magento-2)?
 >
 
-## Compatible with  
+### Compatible with  
 
 <td>
     <table>
