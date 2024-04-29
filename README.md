@@ -3,7 +3,8 @@
 <img align="right" width="300" height="auto" src="https://www.jajuma.de/media/wysiwyg/jajuma-develop/dynamic-shipping-tax-extension-for-magento-2/Dynamic-Shpping-Tax-Module-Magento-2-large.png">  
 
 Dynamic Shipping Tax extension by [JaJuMa](https://www.jajuma.de/en) allows  
-dynamic shipping tax calculation for Magento 2 sites.
+dynamic shipping tax calculation for Magento 2 sites 
+based on the highest product tax or highest amount tax in cart.
 
 > **Note**  
 > Looking for [proportional/pro-rata shipping tax calculation - Click Here!](https://www.jajuma.de/en/jajuma-develop/magento-extensions/proportional-pro-rata-dynamic-shipping-tax-plus-extension-for-magento-2)?
@@ -43,6 +44,8 @@ Install via composer as any other Magento extension from github:
 ```
 composer require jajuma/dynamicshippingtax
 ```
+or get it from [Extension Website](https://www.jajuma.de/en/jajuma-develop/magento-extensions/dynamic-shipping-tax-extension-for-magento-2)
+for manual installation in `app/code/` as any other Magento extension.
 
 ## Using dynamic shipping tax rates in Magento with JaJuMa "Dynamic Shipping Tax" module
 
@@ -93,7 +96,7 @@ Cart Total 100
 
 The code is licensed under the [MIT License (MIT)](https://github.com/JaJuMa/AwesomeHyva/blob/master/LICENSE)
 
-## Other [Magento 2 Extensions](ttps://www.jajuma.de/en/jajuma-develop/magento-extensions) by [JaJuMa](https://www.jajuma.de/)
+## Other [Magento 2 Extensions](ttps://www.jajuma.de/en/jajuma-develop/magento-extensions) & [Hyvä Themes Extensions](https://www.jajuma.de/en/jajuma-develop/hyva-extensions) by [JaJuMa](https://www.jajuma.de/)
 
 * :framed_picture: Performance & UX:<br>[Ultimate Image Optimizer for Magento 2](https://www.jajuma.de/en/jajuma-develop/magento-extensions/ultimate-image-optimizer-extension-for-magento-2)<br>
   AVIF & WebP Images, Lazy Loading, High-Resolution / Retina images
@@ -167,7 +170,7 @@ The code is licensed under the [MIT License (MIT)](https://github.com/JaJuMa/Awe
 * :question: :free: Content:<br>[Hyvä FAQ Widget for Hyvä Themes](https://www.jajuma.de/en/jajuma-develop/magento-extensions/hyva-faq-widget-extension-for-hyva-themes)<br>
   FAQ Widget for your [Hyvä Themes](https://www.jajuma.de/de/jajuma-shop/online-shop-mit-magento-2-und-hyva-themes) Store
 
-* :question: :free: Admin Tools:<br>[Magento Power Toys](https://www.jajuma.de/en/jajuma-develop/magento-extensions/power-toys-for-magento-2)<br>
+* :jigsaw: :free: Admin Tools:<br>[Magento Power Toys](https://www.jajuma.de/en/jajuma-develop/magento-extensions/power-toys-for-magento-2)<br>
   Tools and helpers, a.k.a "Toys", for Magento Admins
 
 ## Other [Services](https://www.jajuma.de/en/jajuma/company-magento-ecommerce-agency-stuttgart) by [JaJuMa](https://www.jajuma.de/)
