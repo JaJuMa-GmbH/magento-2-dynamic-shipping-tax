@@ -152,6 +152,15 @@ The code is licensed under the [MIT License (MIT)](https://github.com/JaJuMa/Awe
 * :rocket: Performance:<br>[Hyvä Inline CSS](https://www.jajuma.de/en/jajuma-develop/magento-extensions/hyva-inline-css-extension-for-magento-with-hyva-themes)<br>
   Run Magento 2 without CSS file by inline all CSS
 
+* :zap: Performance:<br>[Smart Speculations Rules](https://www.jajuma.de/en/jajuma-develop/magento-extensions/smart-speculations-rules-extension-for-magento-2)<br>
+  Instant Page Navigations With Smart Data-Driven Prerendering Via Speculations Rules API
+
+* :abc: Content Management:<br>[Hyvä Translation](https://www.jajuma.de/en/jajuma-develop/magento-extensions/hyva-translation-extension-for-magento-2-with-hyva-theme)<br>
+  Manage translations via Inline Translation, Backend & CSV files
+
+* :vertical_traffic_light: Performance Monitoring:<br>[Real User Monitorin (RUM)](https://www.jajuma.de/en/jajuma-develop/magento-extensions/real-user-monitoring-rum-extension-for-magento-2)<br>
+  Monitor performance AND errors in your Magento 2 store as experienced by actual users
+
 * :man_technologist: :free: Content Management:<br>[Syntax Highlighter 4 Page Builder](https://www.jajuma.de/en/jajuma-develop/magento-extensions/syntax-highlighter-4-page-builder-extension-for-magento-2)<br>
   Syntax Highlighting and more for Magento 2 Page Builder
 
