@@ -158,7 +158,7 @@ The code is licensed under the [MIT License (MIT)](https://github.com/JaJuMa/Awe
 * :abc: Content Management:<br>[Hyvä Translation](https://www.jajuma.de/en/jajuma-develop/magento-extensions/hyva-translation-extension-for-magento-2-with-hyva-theme)<br>
   Manage translations via Inline Translation, Backend & CSV files
 
-* :vertical_traffic_light: Performance Monitoring:<br>[Real User Monitorin (RUM)](https://www.jajuma.de/en/jajuma-develop/magento-extensions/real-user-monitoring-rum-extension-for-magento-2)<br>
+* :vertical_traffic_light: Performance Monitoring:<br>[Real User Monitoring (RUM)](https://www.jajuma.de/en/jajuma-develop/magento-extensions/real-user-monitoring-rum-extension-for-magento-2)<br>
   Monitor performance AND errors in your Magento 2 store as experienced by actual users
 
 * :man_technologist: :free: Content Management:<br>[Syntax Highlighter 4 Page Builder](https://www.jajuma.de/en/jajuma-develop/magento-extensions/syntax-highlighter-4-page-builder-extension-for-magento-2)<br>
