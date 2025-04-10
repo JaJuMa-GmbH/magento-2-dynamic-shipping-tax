@@ -143,9 +143,11 @@ class CommonTaxCollectorPlugin
             if ($quoteItem->getParentItem()) {
                 continue;
             }
-
-            $itemTaxClassId = $quoteItem->getData('tax_class_id');
+            //$itemTaxClassId = $quoteItem->getData('tax_class_id');
+            $itemTaxClassId = $this->getItemTaxClassId($quoteItem);
             $itemTaxPercent = $quoteItem->getTaxPercent();
+
+            //Recalculate tax percent from customer group tax, need check more
             if (!$itemTaxPercent) {
                 $itemTaxPercent = $this->getTaxPercent($itemTaxClassId, $store);
             }
@@ -176,7 +178,8 @@ class CommonTaxCollectorPlugin
             }
 
             $itemPrice = $quoteItem->getRowTotal();
-            $itemTaxClassId = $quoteItem->getData('tax_class_id');
+            //$itemTaxClassId = $quoteItem->getData('tax_class_id');
+            $itemTaxClassId = $this->getItemTaxClassId($quoteItem);
             if ($itemPrice >= $highestProductPrice) {
                 $taxClassId = $itemTaxClassId;
                 $highestProductPrice = $itemPrice;
@@ -210,5 +213,39 @@ class CommonTaxCollectorPlugin
         }
 
         return $taxPercent;
+    }
+
+    /**
+     * Retrieve the tax class ID for a quote item.
+     *
+     * This method checks the tax class ID of the provided quote item. If the item
+     * is of type 'configurable', it attempts to retrieve the tax class ID from the
+     * associated child (simple) product instead of the parent (configurable) product.
+     *
+     * @param \Magento\Quote\Model\Quote\Item $quoteItem The quote item for which the tax class ID is being retrieved.
+     * @return int|string|null The tax class ID of the quote item or its associated child product, if applicable.
+     */
+    private function getItemTaxClassId($quoteItem): string
+    {
+        //Magento always get the parent tax class id here, need check and get from child item
+        $taxClassId = $quoteItem->getData('tax_class_id');
+        if ($quoteItem->getProductType() === 'configurable') {
+            if (method_exists($quoteItem, 'getProduct')) {
+                $parentProduct = $quoteItem->getProduct();
+                if ($parentProduct) {
+                    $simpleOption = $parentProduct->getCustomOption('simple_product');
+                    if ($simpleOption) {
+                        if (method_exists($simpleOption, 'getProduct')) {
+                            $product = $simpleOption->getProduct();
+                            if ($product) {
+                                $taxClassId = $product->getData('tax_class_id');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return (string)$taxClassId;
     }
 }
